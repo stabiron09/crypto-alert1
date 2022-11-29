@@ -4,7 +4,7 @@ import urllib3
 import re
 import smtplib
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-y="https://www.indiainfoline.com/top-share-market-news/1"
+y="https://www.indiainfoline.com/top-share-market-news/2"
 url= y
 x=requests.get(url, verify=False)
 z=x.text
