@@ -1,1 +1,5 @@
 requests==2.28.1
+sys
+urllib3
+re
+secure-smtplib
