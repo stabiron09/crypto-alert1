@@ -4,7 +4,7 @@ import urllib3
 import re
 import smtplib
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-y="https://www.indiainfoline.com/top-share-market-news/2"
+y="https://www.indiainfoline.com/top-share-market-news/1"
 url= y
 x=requests.get(url, verify=False)
 z=x.text
@@ -13,6 +13,6 @@ if x:
     server = smtplib.SMTP('smtp.gmail.com',587)
     server.starttls()
     server.login('keerak0009@gmail.com', 'oywqosuhvhqxtlvy')
-    server.sendmail('keerak0009@gmail.com', 'arpitkeer11@gmail.com', 'message')
+    server.sendmail('keerak0009@gmail.com', 'arpitkeer11@gmail.com', 'bhai indiainfolline pe update as chuke hai <a href="https://www.indiainfoline.com/top-share-market-news/1">click me</a>')
 else:
     print("sorry")
