@@ -13,6 +13,6 @@ if x:
     server = smtplib.SMTP('smtp.gmail.com',587)
     server.starttls()
     server.login('keerak0009@gmail.com', 'oywqosuhvhqxtlvy')
-    server.sendmail('keerak0009@gmail.com', 'arpitkeer11@gmail.com', 'bhai indiainfolline pe update as chuke hai <http://www.indiainfoline.com/top-share-market-news/1>')
+    server.sendmail('keerak0009@gmail.com', 'arpitkeer11@gmail.com', 'bhai indiainfolline pe update as chuke hai')
 else:
     print("sorry")
