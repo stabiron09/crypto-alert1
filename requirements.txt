@@ -1,5 +1,4 @@
 requests
-urllib3
 json
 secure-smtplib
 cryptography
