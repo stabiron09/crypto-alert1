@@ -173,7 +173,7 @@ if iv>1200:
 	with smtplib.SMTP(smtp_server, port) as smtp:
 		            			smtp.starttls()
 		            			smtp.login(username, password)
-		            			smtp.sendmail('keerak0009@gmail.com', 'arpitkeer11@gmail.com', message)
+		            			smtp.sendmail('keerak0009@gmail.com', 'arpitkeer30@gmail.com', message)
 	            
 else:
 	print("nothing to worrry about")
