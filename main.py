@@ -162,9 +162,9 @@ y=api_trading_client.get_user_portfolio()
 json_data = json.loads(y)
 data = json.loads(y); name = "Indian Rupee"; iv = next((item["invested_value"] for item in data["data"] if item["name"] == name), None); print(f"Main balance for {name}: {iv}")
 a= iv
-if iv>1200:
+if iv>500:
 	subject = "ALERT"
-	body = "the amount have been exceeded. check and sell the cryptos manually. the current portfolio amount is given below:\n{}".format(a)
+	body = "Alert.  Note that your Kinswitch's portfolio amount is too high.  The order could not be executed due to a problem with the program. The current portfolio amount is given below:\n{}".format(a)
 	message = f"Subject: {subject}\n\n{body}"
 	smtp_server = "smtp.gmail.com"
 	port = 587
