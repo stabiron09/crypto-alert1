@@ -164,7 +164,7 @@ data = json.loads(y); name = "Indian Rupee"; iv = next((item["invested_value"] f
 a= iv
 if iv>500:
 	subject = "ALERT"
-	body = "Alert.  Note that your Kinswitch's portfolio amount is too high.  The order could not be executed due to a problem with the program. The current portfolio amount is given below:\n{}".format(a)
+	body = "Alert.  Note that your coinswitch's portfolio amount is too high.  The order could not be executed due to a problem with the program. The current portfolio amount is given below.Ignote this email if you are trading manually or settling unsold crypto currencies:\n{}".format(a)
 	message = f"Subject: {subject}\n\n{body}"
 	smtp_server = "smtp.gmail.com"
 	port = 587
