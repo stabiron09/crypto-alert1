@@ -162,7 +162,7 @@ y=api_trading_client.get_user_portfolio()
 json_data = json.loads(y)
 data = json.loads(y); name = "Indian Rupee"; iv = next((item["invested_value"] for item in data["data"] if item["name"] == name), None); print(f"Main balance for {name}: {iv}")
 a= iv
-if iv>500:
+if iv>1200:
 	subject = "ALERT"
 	body = "Alert.  Note that your coinswitch's portfolio amount is too high.  The order could not be executed due to a problem with the program. The current portfolio amount is given below.Ignore this email if you are trading manually or settling unsold crypto currencies or you are aware about it:\n{}".format(a)
 	message = f"Subject: {subject}\n\n{body}"
