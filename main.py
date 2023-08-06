@@ -6,6 +6,42 @@ import requests
 import time
 import random
 import smtplib
+def check_url(url):
+    try:
+        response = requests.get(url)
+        if response.status_code == 200:
+            return True
+        else:
+            return False
+    except requests.RequestException:
+        return False
+
+def send_email(recipient_email, subject, body):
+    # Configure your email settings here
+    sender_email = 'keerak0009@gmail.com'
+    password = 'oywqosuhvhqxtlvy'
+    smtp_server = 'smtp.gmail.com'
+    smtp_port = 587
+
+    msg = MIMEText(body)
+    msg['Subject'] = subject
+    msg['From'] = sender_email
+    msg['To'] = recipient_email
+
+    server = smtplib.SMTP(smtp_server, smtp_port)
+    server.starttls()
+    server.login(sender_email, password)
+    server.sendmail(sender_email, recipient_email, msg.as_string())
+    server.quit()
+
+if __name__ == "__main__":
+    url_to_check = "https://pendo.serveo.net/"  # Replace with your desired URL
+    recipient_email = "arpitkeer30@gmail.com"  # Replace with the email address you want to send to
+
+    if not check_url(url_to_check):
+        subject = "URL not working"
+        body = f"The URL {url_to_check} is not working. Please check."
+        send_email(recipient_email, subject, body)
 
 class ApiTradingClient:
 
