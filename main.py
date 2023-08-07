@@ -178,3 +178,28 @@ if iv>1200:
 	            
 else:
 	print("nothing to worrry about")
+
+
+
+
+def send_email(subject, body):
+  sender = "keerak0009@gmail.com"
+  recipient = "arpitkeer30@gmail.com"
+  password = "oywqosuhvhqxtlvy"
+
+  server = smtplib.SMTP("smtp.gmail.com", 587)
+  server.starttls()
+  server.login(sender, password)
+
+  message = f"Subject: {subject}\n\n{body}"
+  server.sendmail(sender, recipient, message)
+
+def check_website():
+  response = requests.get("https://mysite09.pagekite.me")
+  if response.status_code != 200:
+    subject = "Website is down"
+    body = f"The website at https://mysite09.pagekite.me is down. The status code is {response.status_code} . the termux might not be running or the internet connection is lost. check manually"
+    send_email(subject, body)
+
+if __name__ == "__main__":
+  check_website()
