@@ -198,7 +198,7 @@ def check_website():
   response = requests.get("http://mysite09.pagekite.me")
   if response.status_code != 200:
     subject = "Website is down"
-    body = f"The website at https://mysite09.pagekite.me is down. The status code is {response.status_code} . the termux might not be running or the internet connection is lost. check manually"
+    body = f"The website at http://mysite09.pagekite.me is down. The status code is {response.status_code} . the termux might not be running or the internet connection is lost. check manually"
     send_email(subject, body)
 
 if __name__ == "__main__":
