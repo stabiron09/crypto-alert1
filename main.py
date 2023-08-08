@@ -194,11 +194,31 @@ def send_email(subject, body):
   message = f"Subject: {subject}\n\n{body}"
   server.sendmail(sender, recipient, message)
 
+
 def check_website():
-  response = requests.get("http://mysite09.pagekite.me")
+  """Checks if the website is up and running.
+
+  If the website is down, sends an email notification.
+
+  Args:
+    None
+
+  Returns:
+    None
+  """
+
+  try:
+    response = requests.get("http://mysite09.pagekite.me", timeout=10)
+  except requests.TimeoutError:
+    subject = "Website is down"
+    body = f"The website at http://mysite09.pagekite.me is down. The status code is 504. Please check manually.server was timed out. wait for few minutes if you don't receive the email means everything is ok again. internet was timeout potentially means it's been only atmost 3 minute that connection was lost. check internet connection with the help of webview app. if you are recieving the email again and again check wifi and electricity connection."
+    send_email(subject, body)
+
+    return
+
   if response.status_code != 200:
     subject = "Website is down"
-    body = f"The website at http://mysite09.pagekite.me is down. The status code is {response.status_code} . the termux might not be running or the internet connection is lost. check manually"
+    body = f"The website at http://mysite09.pagekite.me is down. The status code is {response.status_code}. Please check manually. (1)the termux might not be running (2)the internet connection was lost (3)pagekite tunnel was close (4) phone is switched off. thibgs you can do (1) check device status on webview test app. (2) restart all process if it is close accidently (3) wait for 20 minutes if you don't receive the email again means everything is back on track. if you recieving the email again and again check the wifi and electricity connection"
     send_email(subject, body)
 
 if __name__ == "__main__":
