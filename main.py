@@ -176,7 +176,7 @@ if iv>1200:
 	with smtplib.SMTP(smtp_server, port) as smtp:
 		            			smtp.starttls()
 		            			smtp.login(username, password)
-		            			smtp.sendmail('keerak0009@gmail.com', 'arpitkeer30@gmail.com', message)
+		            			smtp.sendmail('keerak0009@gmail.com', 'arpitkeer35@gmail.com', message)
 	            
 else:
 	print("nothing to worrry about")
@@ -187,7 +187,7 @@ def send_email(subject, message):
     # Email configuration
     sender_email = "keerak0009@gmail.com"
     sender_password = "oywqosuhvhqxtlvy"
-    receiver_email = "arpitkeer30@gmail.com"
+    receiver_email = "arpitkeer35@gmail.com"
 
     # Create a MIMEText object
     msg = MIMEMultipart()
