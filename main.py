@@ -187,7 +187,7 @@ def send_email(subject, message):
     # Email configuration
     sender_email = "keerak0009@gmail.com"
     sender_password = "oywqosuhvhqxtlvy"
-    receiver_email = "arpitkeer9@gmail.com"
+    receiver_email = "arpitkeer30@gmail.com"
 
     # Create a MIMEText object
     msg = MIMEMultipart()
