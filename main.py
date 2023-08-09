@@ -6,6 +6,8 @@ import requests
 import time
 import random
 import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 
 class ApiTradingClient:
@@ -179,47 +181,42 @@ if iv>1200:
 else:
 	print("nothing to worrry about")
 
+url = "http://mysite09.pagekite.me/"
+
+def send_email(subject, message):
+    # Email configuration
+    sender_email = "keerak0009@gmail.com"
+    sender_password = "oywqosuhvhqxtlvy"
+    receiver_email = "arpitkeer9@gmail.com"
+
+    # Create a MIMEText object
+    msg = MIMEMultipart()
+    msg["From"] = sender_email
+    msg["To"] = receiver_email
+    msg["Subject"] = subject
+    msg.attach(MIMEText(message, "plain"))
+
+    # Connect to the SMTP server and send the email
+    with smtplib.SMTP("smtp.example.com", 587) as server:
+        server.starttls()
+        server.login(sender_email, sender_password)
+        server.sendmail(sender_email, receiver_email, msg.as_string())
+
+try:
+    response = requests.get(url)
+    if response.status_code == 200:
+        print("Website is up and running (Status 200 OK)")
+    else:
+        error_message = f"Website is down! Status code: {response.status_code}"
+        print(error_message)
+        send_email("Website Down", error_message)
+except requests.exceptions.RequestException as e:
+    error_message = f"Error while trying to access the website: {str(e)}"
+    print(error_message)
+    send_email("Website Error", error_message)
+except Exception as e:
+    error_message = f"An unexpected error occurred: {str(e)}"
+    print(error_message)
+    send_email("Website Error", error_message)
 
 
-
-def send_email(subject, body):
-  sender = "keerak0009@gmail.com"
-  recipient = "arpitkeer30@gmail.com"
-  password = "oywqosuhvhqxtlvy"
-
-  server = smtplib.SMTP("smtp.gmail.com", 587)
-  server.starttls()
-  server.login(sender, password)
-
-  message = f"Subject: {subject}\n\n{body}"
-  server.sendmail(sender, recipient, message)
-
-
-def check_website():
-  """Checks if the website is up and running.
-
-  If the website is down, sends an email notification.
-
-  Args:
-    None
-
-  Returns:
-    None
-  """
-
-  try:
-    response = requests.get("http://mysite09.pagekite.me", timeout=10)
-  except requests.TimeoutError:
-    subject = "Website is down"
-    body = f"The website at http://mysite09.pagekite.me is down. The status code is 504. Please check manually.server was timed out. wait for few minutes if you don't receive the email means everything is ok again. internet was timeout potentially means it's been only atmost 3 minute that connection was lost. check internet connection with the help of webview app. if you are recieving the email again and again check wifi and electricity connection."
-    send_email(subject, body)
-
-    return
-
-  if response.status_code != 200:
-    subject = "Website is down"
-    body = f"The website at http://mysite09.pagekite.me is down. The status code is {response.status_code}. Please check manually. (1)the termux might not be running (2)the internet connection was lost (3)pagekite tunnel was close (4) phone is switched off. thibgs you can do (1) check device status on webview test app. (2) restart all process if it is close accidently (3) wait for 20 minutes if you don't receive the email again means everything is back on track. if you recieving the email again and again check the wifi and electricity connection"
-    send_email(subject, body)
-
-if __name__ == "__main__":
-  check_website()
