@@ -176,7 +176,7 @@ if iv>1200:
 	with smtplib.SMTP(smtp_server, port) as smtp:
 		            			smtp.starttls()
 		            			smtp.login(username, password)
-		            			smtp.sendmail('keerak0009@gmail.com', 'arpitkeer35@gmail.com', message)
+		            			smtp.sendmail('keerak0009@gmail.com', 'arpitkeer30@gmail.com', message)
 	            
 else:
 	print("nothing to worrry about")
@@ -187,7 +187,7 @@ def send_email(subject, message):
     # Email configuration
     sender_email = "keerak0009@gmail.com"
     sender_password = "oywqosuhvhqxtlvy"
-    receiver_email = "arpitkeer35@gmail.com"
+    receiver_email = "arpitkeer30@gmail.com"
 
     # Create a MIMEText object
     msg = MIMEMultipart()
@@ -207,11 +207,11 @@ try:
     if response.status_code == 200:
         print("Website is up and running (Status 200 OK)")
     else:
-        error_message = f"Website is down! Status code: {response.status_code}"
+        error_message = f"Website is down! Status code: {response.status_code} .check manually. or wait for few minutes if you stop receving the email means everything is fine now. check the mobile status with webview app."
         print(error_message)
         send_email("Website Down", error_message)
 except requests.exceptions.RequestException as e:
-    error_message = f"Error while trying to access the website: {str(e)}"
+    error_message = f"Error while trying to access the website: {str(e)}. an error occured means the website gone down few minutes ago. potentialy means power supply is down. phone is dead. or internet connection was lost. check webview for more information about phone"
     print(error_message)
     send_email("Website Error", error_message)
 except Exception as e:
