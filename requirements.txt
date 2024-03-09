@@ -1,2 +1,4 @@
 urllib3==1.26.6
 requests==2.25.1
+websocket-client==1.2.3
+python-socketio==5.5.1
