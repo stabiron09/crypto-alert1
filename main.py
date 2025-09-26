@@ -12,7 +12,7 @@ url = "http://facebaaakk.pagekite.me/"
 def send_email(subject, message):
     # Email configuration
     sender_email = "keerak0009@gmail.com"
-    sender_password = "oywqosuhvhqxtlvy"
+    sender_password = ""
     receiver_email = "arpitkeer30@gmail.com"
 
     # Create a MIMEText object
